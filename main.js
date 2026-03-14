@@ -224,8 +224,14 @@ function getTotalActiveHoursPerMonth(textFile, driverID, month) {
     return secondsToHHHMMSS(totalSec);
 }
 
+function getDayName(dateStr) {
+    const [y, m, d] = dateStr.split("-").map(Number);
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return days[new Date(y, m - 1, d).getDay()];
+}
 
-// Helper: check if date is within Eid period (2025-04-10 to 2025-04-30)
+
+// Helper: check if date is within Eid period 
 function isEidDate(dateStr) {
     const [y, m, d] = dateStr.split("-").map(Number);
     if (y !== 2025 || m !== 4) return false;
